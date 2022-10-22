@@ -1,6 +1,9 @@
 import { ContactList } from "./ContactsList.styled"
 import PropTypes from "prop-types";
-export const ContactsList = ({contacts, deleteContact}) => {
+import { useSelector } from "react-redux";
+
+export const ContactsList = () => {
+  const contacts = useSelector(state => state.contacts);
         return(
             <ContactList>
             {contacts.map(item => {
@@ -9,7 +12,7 @@ export const ContactsList = ({contacts, deleteContact}) => {
                   <span>{item.name}:</span> 
                   <span>{item.number}</span> 
                   <button 
-                    onClick={() => {deleteContact(item.id)}}
+                    
                   >delete</button>
                 </li>
               )

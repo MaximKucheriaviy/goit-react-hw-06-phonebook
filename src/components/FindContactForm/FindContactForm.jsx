@@ -3,14 +3,13 @@ import { nanoid } from "nanoid";
 import { VerticalForm } from "./FindContactForm.styled"
 import PropTypes from "prop-types";
 
-export const FindContactForm = ({filterChage}) => {
+export const FindContactForm = () => {
     const nameId = useRef(nanoid());
     const [name, setName] = useState("");
 
     const chageHendler = (event) => {
         const {value} = event.target;
         setName(value);
-        filterChage(value);
     }
 
     return(

@@ -15,21 +15,6 @@ export const App = () => {
   },[contacts]);
 
 
-  const onSubmit = (formState) => {
-    if(contacts.some(({name}) => name.toLowerCase() === formState.name.toLowerCase())){
-      alert(`${formState.name} is already in contacts`);
-      return;
-    }
-    const newContacts = [...contacts];
-    const contact = {
-      name: formState.name,
-      number: formState.number,
-      id: nanoid()
-    }
-    newContacts.push(contact);
-    setContacts(newContacts);
-  }
-
   const chageFilter = (value) => {
     value = value.toLowerCase();
     setFilter(value);
@@ -52,11 +37,11 @@ export const App = () => {
   return (
     <div>
       <Section title="Phonebook">
-        <AddNumberForm onSubmit={onSubmit}/>
+        <AddNumberForm/>
       </Section>
       <Section title="Contacts">
-        <FindContactForm filterChage={chageFilter}/>
-        <ContactsList contacts={filterContacts()} deleteContact={deleteContact}/>
+        <FindContactForm/>
+        <ContactsList/>
       </Section>
     </div>
   );

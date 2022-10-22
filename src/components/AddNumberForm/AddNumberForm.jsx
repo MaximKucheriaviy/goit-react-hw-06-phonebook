@@ -1,14 +1,16 @@
 import { nanoid } from "nanoid";
 import { useState, useRef } from "react";
 import { AddForm } from "./AddNumberForm.styled"
+import { addContact } from "redux/slices";
 import PropTypes from "prop-types";
 
-export const AddNumberForm = ({onSubmit}) => {
+export const AddNumberForm = () => {
     const nameInputId = useRef(nanoid());
     const telephoneInputId = useRef(nanoid());
 
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
+
 
     const chageHendler = (event) => {
         const {value, name} = event.target;
@@ -31,7 +33,7 @@ export const AddNumberForm = ({onSubmit}) => {
 
     const onSubmitHendler = (event) =>{
         event.preventDefault();
-        onSubmit({name, number});
+        addContact({name, number, id: nanoid()});
         clearForm();
     }
 
