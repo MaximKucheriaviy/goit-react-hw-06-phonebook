@@ -1,15 +1,18 @@
-import { useState, useRef } from "react"
+import { useRef } from "react"
 import { nanoid } from "nanoid";
 import { VerticalForm } from "./FindContactForm.styled"
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { chageFilter } from "redux/slices";
 
 export const FindContactForm = () => {
     const nameId = useRef(nanoid());
-    const [name, setName] = useState("");
-
+    const dispatch = useDispatch();
+    const name = useSelector(state => state.filter);
     const chageHendler = (event) => {
         const {value} = event.target;
-        setName(value);
+        dispatch(chageFilter(value));
     }
 
     return(
